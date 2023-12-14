@@ -60,6 +60,10 @@ public class PairMatchingService {
         throw new IllegalArgumentException("[ERROR] 매칭 이력이 없습니다.");
     }
 
+    public void resetPair(PairResult pairResult) {
+        pairResult.resetPair();
+    }
+
     private static void validatePairDuplicate(PairTypeRequest request, List<Pair> pairResults, List<String> shuffleCrewNames) {
         for (Pair pair : pairResults) {
             if (!pair.getLevel().equals(request.getLevel())) {

@@ -10,6 +10,10 @@ public class PairResult {
         pairs.add(pair);
     }
 
+    public void resetPair() {
+        pairs.clear();
+    }
+
     public List<Pair> getPairs() {
         return pairs;
     }
