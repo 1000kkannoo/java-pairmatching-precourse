@@ -45,7 +45,7 @@ public class PairMatchingService {
         List<String> shuffleCrewNames = Randoms.shuffle(pairCrewNames);
         validatePairDuplicate(request, pairResults, shuffleCrewNames);
 
-        Pair pair = Pair.createPair(request.getMissionName(), request.getLevel(), shuffleCrewNames);
+        Pair pair = Pair.createPair(request.getCourse(), request.getMissionName(), request.getLevel(), shuffleCrewNames);
         pairResults.add(pair);
 
         return pair;
