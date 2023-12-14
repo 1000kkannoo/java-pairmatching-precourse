@@ -37,9 +37,9 @@ public class PairMatchingService {
         return createCrewResponse.getFrontend();
     }
 
-    public Pair createPair(PairResult pairResult, PairTypeRequest request, List<Crew> crews) {
+    public Pair createPair(PairResult pairResult, PairTypeRequest request, List<Crew> crews, boolean isUpdate) {
         List<Pair> pairResults = pairResult.getPairs();
-        validateMatched(request, pairResults, crews);
+        validateMatched(request, pairResults, crews, isUpdate);
 
         List<String> pairCrewNames = getPairCrewNames(crews);
         List<String> shuffleCrewNames = Randoms.shuffle(pairCrewNames);
@@ -53,7 +53,7 @@ public class PairMatchingService {
 
     public Pair selectPair(PairResult pairResult, PairTypeRequest request) {
         for (Pair pair : pairResult.getPairs()) {
-            if (pair.getLevel().equals(request.getLevel()) && pair.getMissionName().equals(request.getMissionName())) {
+            if (pair.getLevel().equals(request.getLevel()) && pair.getMissionName().equals(request.getMissionName()) && pair.getCourse().equals(request.getCourse())) {
                 return pair;
             }
         }
@@ -111,9 +111,13 @@ public class PairMatchingService {
         }
     }
 
-    private static void validateMatched(PairTypeRequest request, List<Pair> pairResults, List<Crew> crews) {
+    private static void validateMatched(PairTypeRequest request, List<Pair> pairResults, List<Crew> crews, boolean isUpdate) {
         for (Pair pair : pairResults) {
             if (pair.getLevel().equals(request.getLevel()) && pair.getMissionName().equals(request.getMissionName())) {
+                if (isUpdate) {
+                    pairResults.remove(pair);
+                    break;
+                }
                 throw new IllegalArgumentException("[ERROR] 이미 매칭 되어있는 타입입니다.");
             }
         }

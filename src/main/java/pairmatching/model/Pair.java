@@ -33,4 +33,8 @@ public class Pair {
     public List<String> getShuffleCrewNames() {
         return shuffleCrewNames;
     }
+
+    public Course getCourse() {
+        return course;
+    }
 }
