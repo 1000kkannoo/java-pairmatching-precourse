@@ -17,4 +17,16 @@ public class PairTypeRequest {
     public static PairTypeRequest of(Course course, Level level, String missionName) {
         return new PairTypeRequest(course, level, missionName);
     }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public String getMissionName() {
+        return missionName;
+    }
 }

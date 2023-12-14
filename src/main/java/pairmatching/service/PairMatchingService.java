@@ -2,6 +2,9 @@ package pairmatching.service;
 
 import pairmatching.model.Course;
 import pairmatching.model.Crew;
+import pairmatching.model.Level;
+import pairmatching.model.Pair;
+import pairmatching.request.PairTypeRequest;
 import pairmatching.response.CreateCrewResponse;
 
 import java.io.IOException;
@@ -26,6 +29,13 @@ public class PairMatchingService {
         saveCrews(frontend, frontendCrewNames, Course.FRONTEND);
 
         return CreateCrewResponse.of(backend, frontend);
+    }
+
+    public List<Crew> selectCourseCrews(CreateCrewResponse createCrewResponse, PairTypeRequest request) {
+        if (request.getCourse().equals(Course.BACKEND)) {
+            return createCrewResponse.getBackend();
+        }
+        return createCrewResponse.getFrontend();
     }
 
     private static void saveCrews(List<Crew> backend, String[] backendCrewNames, Course course) {

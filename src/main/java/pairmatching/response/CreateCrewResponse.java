@@ -16,4 +16,12 @@ public class CreateCrewResponse {
     public static CreateCrewResponse of(List<Crew> backend, List<Crew> frontend) {
         return new CreateCrewResponse(backend, frontend);
     }
+
+    public List<Crew> getBackend() {
+        return backend;
+    }
+
+    public List<Crew> getFrontend() {
+        return frontend;
+    }
 }

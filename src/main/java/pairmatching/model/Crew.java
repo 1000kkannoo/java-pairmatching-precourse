@@ -12,4 +12,12 @@ public class Crew {
     public static Crew createCrew(Course course, String name) {
         return new Crew(course,name);
     }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
