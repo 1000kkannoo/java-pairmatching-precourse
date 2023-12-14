@@ -27,14 +27,20 @@ public class InputView {
 
     public PairTypeRequest selectPairTypeInput() {
         System.out.println(SELECT_PAIR_TYPE_MESSAGE);
-        String input = readLine();
-        return InputParser.pairTypeParser(input);
+        while (true) {
+            try {
+                String input = readLine();
+                return InputParser.pairTypeParser(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     public String selectReMatchingInput() {
         System.out.println(
                 "매칭 정보가 있습니다. 다시 매칭하시겠습니까?\n" +
-                "네 | 아니오");
+                        "네 | 아니오");
         return readLine();
     }
 }
