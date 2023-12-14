@@ -51,6 +51,15 @@ public class PairMatchingService {
         return pair;
     }
 
+    public Pair selectPair(PairResult pairResult, PairTypeRequest request) {
+        for (Pair pair : pairResult.getPairs()) {
+            if (pair.getLevel().equals(request.getLevel()) && pair.getMissionName().equals(request.getMissionName())) {
+                return pair;
+            }
+        }
+        throw new IllegalArgumentException("[ERROR] 매칭 이력이 없습니다.");
+    }
+
     private static void validatePairDuplicate(PairTypeRequest request, List<Pair> pairResults, List<String> shuffleCrewNames) {
         for (Pair pair : pairResults) {
             if (!pair.getLevel().equals(request.getLevel())) {
