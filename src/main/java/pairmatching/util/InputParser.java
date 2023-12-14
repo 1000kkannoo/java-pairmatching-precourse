@@ -21,6 +21,18 @@ public class InputParser {
         Level level = findByLevel(split[1]);
         String missionName = split[2];
 
+        validateLevel(level);
+        validateMissionName(level, missionName);
+        return PairTypeRequest.of(course, level, missionName);
+    }
+
+    private static void validateLevel(Level level) {
+        if (level.equals(LEVEL3) || level.equals(LEVEL5)) {
+            throw new IllegalArgumentException("[ERROR] 미션이 존재하지 않는 레벨입니다.");
+        }
+    }
+
+    private static void validateMissionName(Level level, String missionName) {
         if (level.equals(LEVEL1) && !LEVEL1_MISSION_NAME.contains(missionName)) {
             throw new IllegalArgumentException("[ERROR] 존재하지 않는 미션입니다.");
         } else if (level.equals(LEVEL2) && !LEVEL2_MISSION_NAME.contains(missionName)) {
@@ -28,6 +40,5 @@ public class InputParser {
         } else if (level.equals(LEVEL4) && !LEVEL4_MISSION_NAME.contains(missionName)) {
             throw new IllegalArgumentException("[ERROR] 존재하지 않는 미션입니다.");
         }
-        return PairTypeRequest.of(course, level, missionName);
     }
 }
