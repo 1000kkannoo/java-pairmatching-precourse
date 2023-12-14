@@ -17,15 +17,18 @@ public class PairMatchingService {
     public static final String BACKEND_CREW = "/Users/chw/Desktop/project/java-pairmatching-precourse/src/main/resources/backend-crew.md";
     public static final String FRONTEND_CREW = "/Users/chw/Desktop/project/java-pairmatching-precourse/src/main/resources/frontend-crew.md";
 
-    public CreateCrewResponse createCrews() throws IOException {
+    public CreateCrewResponse createCrews() {
         List<Crew> backend = new ArrayList<>();
         List<Crew> frontend = new ArrayList<>();
 
-        String[] backendCrewNames = new String(getFileString(BACKEND_CREW)).split("\n");
-        String[] frontendCrewNames = new String(getFileString(FRONTEND_CREW)).split("\n");
-
-        saveCrews(backend, backendCrewNames, Course.BACKEND);
-        saveCrews(frontend, frontendCrewNames, Course.FRONTEND);
+        try {
+            String[] backendCrewNames = new String(getFileString(BACKEND_CREW)).split("\n");
+            String[] frontendCrewNames = new String(getFileString(FRONTEND_CREW)).split("\n");
+            saveCrews(backend, backendCrewNames, Course.BACKEND);
+            saveCrews(frontend, frontendCrewNames, Course.FRONTEND);
+        } catch (IOException e) {
+            System.out.println("[ERROR] 파일 불러오기에 실패하였습니다.");
+        }
 
         return CreateCrewResponse.of(backend, frontend);
     }
