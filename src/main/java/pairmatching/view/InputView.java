@@ -20,9 +20,9 @@ public class InputView {
             "과정, 레벨, 미션을 선택하세요.\n" +
             "ex) 백엔드, 레벨1, 자동차경주";
 
-    public int selectInput() {
+    public String selectInput() {
         System.out.println(SELECT_INPUT_MESSAGE);
-        return Integer.parseInt(readLine());
+        return readLine();
     }
 
     public PairTypeRequest selectPairTypeInput() {
