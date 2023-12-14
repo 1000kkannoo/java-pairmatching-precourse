@@ -19,5 +19,7 @@ public class OutputView {
         if (size % 2 != 0) {
             System.out.println(shuffleCrewNames.get(size - 3) + " : " + shuffleCrewNames.get(size - 2) + " : " + shuffleCrewNames.get(size - 1));
         }
+
+        System.out.println();
     }
 }
