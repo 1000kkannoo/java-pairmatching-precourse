@@ -19,4 +19,16 @@ public class Pair {
     public static Pair createPair(String missionName, Level level, List<String> shuffleCrewNames) {
         return new Pair(missionName, level, shuffleCrewNames);
     }
+
+    public String getMissionName() {
+        return MissionName;
+    }
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public List<String> getShuffleCrewNames() {
+        return shuffleCrewNames;
+    }
 }
