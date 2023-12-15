@@ -14,8 +14,8 @@ import java.util.List;
 
 public class PairMatchingService {
 
-    public static final String BACKEND_CREW = "/Users/chw/Desktop/project/java-pairmatching-precourse/src/main/resources/backend-crew.md";
-    public static final String FRONTEND_CREW = "/Users/chw/Desktop/project/java-pairmatching-precourse/src/main/resources/frontend-crew.md";
+    public static final String BACKEND_CREW = "src/main/resources/backend-crew.md";
+    public static final String FRONTEND_CREW = "src/main/resources/frontend-crew.md";
 
     public CreateCrewResponse createCrews() {
         List<Crew> backend = new ArrayList<>();
